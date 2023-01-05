@@ -58,10 +58,23 @@ client.on('messageCreate', async (message) => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
+  if (message.channelId !== process.env.BIBLY_CHANNEL_ID) {
+    return message.reply('Please do this in the Bibly channel! 🙏');
+  }
+
   if (command === 'randomverse') {
     return await client.commands
       .get('randomverse')
       .execute(message, versesList);
+  }
+
+  if (command === 'clearverseslist') {
+    return await client.commands
+      .get('clearverseslist')
+      .execute(message, versesList);
+  }
+  if (command === 'verseslist') {
+    return await client.commands.get('verseslist').execute(message, versesList);
   }
 });
 
