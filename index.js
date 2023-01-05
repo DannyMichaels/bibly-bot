@@ -62,6 +62,14 @@ client.on('messageCreate', async (message) => {
     return message.reply('Please do this in the Bibly channel! 🙏');
   }
 
+  if (command === 'biblycommandslist' || command === 'biblyhelp') {
+    return [...client.commands.values()].forEach((command) => {
+      message.channel.send(
+        `Command: ${prefix}${command.name} - ${command.description}`
+      );
+    });
+  }
+
   if (command === 'randomverse') {
     return await client.commands
       .get('randomverse')
