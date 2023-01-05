@@ -1,0 +1,16 @@
+{
+  "name": "bibly",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "node-schedule": "^2.1.0",
+    "nodemon": "^2.0.20"
+  }
+}
