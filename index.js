@@ -57,6 +57,7 @@ client.on('messageCreate', async (message) => {
 
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
+  const prompt = message.content.slice(prefix.length + command.length + 1);
 
   if (message.channelId !== process.env.BIBLY_CHANNEL_ID) {
     return message.reply('Please do this in the Bibly channel! 🙏');
@@ -70,17 +71,21 @@ client.on('messageCreate', async (message) => {
     });
   }
 
-  if (command === 'randomverse') {
-    return await client.commands
-      .get('randomverse')
-      .execute(message, versesList);
+  // if (command === 'randomverse') {
+  //   return await client.commands
+  //     .get('randomverse')
+  //     .execute(message, versesList);
+  // }
+
+  if (command === 'verse') {
+    return await client.commands.get('verse').execute(message, prompt);
   }
 
-  if (command === 'clearverseslist') {
-    return await client.commands
-      .get('clearverseslist')
-      .execute(message, versesList);
-  }
+  // if (command === 'clearverseslist') {
+  //   return await client.commands
+  //     .get('clearverseslist')
+  //     .execute(message, versesList);
+  // }
   if (command === 'verseslist') {
     return await client.commands.get('verseslist').execute(message, versesList);
   }
